@@ -4,10 +4,20 @@ const mutationObserver = new MutationObserver(entries => {
 
 const parent = document.querySelector(".parent")
 
-mutationObserver.observe(parent, { childList: true })
+//mutation observer doesn't just need an element to observe. 
+//it also needs an options object telling it what to observe about the selected element
+mutationObserver.observe(parent, {
+    attributes: true, 
+    attributeOldValue: true,  //show old value of changed attribute
+    attributeFilter: ["title"] //which attributes to observe (without this options all are observed)
+})
 
-parent.children[0].remove();
+parent.id="New Id"
+//ceases observing anything. A total flush.
+// mutationObserver.disconnect() 
 
-setTimeout(() => {
-    parent.appendChild(document.createElement("div"));
-}, 100)
+// parent.children[0].remove();
+
+// setTimeout(() => {
+//     parent.appendChild(document.createElement("div"));
+// }, 100)
