@@ -1,0 +1,21 @@
+* {
+    box-sizing:border-box;
+}
+
+.parent {
+    margin:5rem auto;
+    width:900px;
+    height: 250px;
+    background: #fff;
+    border: 1px solid black;
+    padding: 25px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.child {
+    width: 200px;
+    aspect-ratio: 1/1;
+    background-color: lime;
+}
