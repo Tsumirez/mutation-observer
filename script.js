@@ -21,3 +21,17 @@ parent.id="New Id"
 // setTimeout(() => {
 //     parent.appendChild(document.createElement("div"));
 // }, 100)
+
+const textMutationObserver = new MutationObserver(entries => {
+    console.log(entries);
+})
+//observe changes in element's text
+//changing element's text will not be caught because element that is observed does not change.
+//what changes is the text node which is it's child, not element itself.
+//to prevent that mishap either observe the text node directly, os use subtree option
+//to observe anything inside the selected element as well, no matter how deep.
+textMutationObserver.observe(parent,{
+    subtree: true,
+    characterData: true,
+    characterDataOldValue: true
+})
